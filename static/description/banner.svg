@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="280" viewBox="0 0 560 280">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="50%" style="stop-color:#764ba2"/>
+      <stop offset="100%" style="stop-color:#667eea"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#f8f9fa"/>
+    </linearGradient>
+    <linearGradient id="checkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#28a745"/>
+      <stop offset="100%" style="stop-color:#20c997"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="560" height="280" fill="url(#bgGrad)"/>
+  
+  <!-- Floating elements -->
+  <circle cx="50" cy="50" r="3" fill="white" opacity="0.3"/>
+  <circle cx="500" cy="60" r="2" fill="white" opacity="0.4"/>
+  <circle cx="480" cy="220" r="4" fill="white" opacity="0.2"/>
+  <circle cx="80" cy="230" r="2" fill="white" opacity="0.3"/>
+  
+  <!-- Main content card -->
+  <rect x="40" y="40" width="480" height="200" rx="15" fill="url(#cardGrad)" filter="drop-shadow(0 10px 25px rgba(0,0,0,0.1))"/>
+  
+  <!-- Left side - Document workflow -->
+  <g transform="translate(70, 70)">
+    <!-- Document 1 -->
+    <rect x="0" y="0" width="40" height="50" rx="3" fill="#e9ecef" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="5" y="8" width="30" height="2" rx="1" fill="#6c757d"/>
+    <rect x="5" y="14" width="25" height="1.5" rx="0.75" fill="#adb5bd"/>
+    <rect x="5" y="19" width="20" height="1.5" rx="0.75" fill="#adb5bd"/>
+    <text x="20" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6c757d">Draft</text>
+    
+    <!-- Arrow 1 -->
+    <path d="M50 25 L70 25" stroke="#4facfe" stroke-width="2" fill="none"/>
+    <path d="M66 21 L70 25 L66 29" stroke="#4facfe" stroke-width="2" fill="none"/>
+    
+    <!-- Document 2 with approval -->
+    <g transform="translate(80, 0)">
+      <rect x="0" y="0" width="40" height="50" rx="3" fill="#fff3cd" stroke="#ffc107" stroke-width="1"/>
+      <rect x="5" y="8" width="30" height="2" rx="1" fill="#6c757d"/>
+      <rect x="5" y="14" width="25" height="1.5" rx="0.75" fill="#adb5bd"/>
+      <rect x="5" y="19" width="20" height="1.5" rx="0.75" fill="#adb5bd"/>
+      <circle cx="30" cy="10" r="6" fill="url(#checkGrad)"/>
+      <path d="M26 10 L29 13 L34 7" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <text x="20" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6c757d">Approved</text>
+    </g>
+    
+    <!-- Arrow 2 -->
+    <path d="M130 25 L150 25" stroke="#28a745" stroke-width="2" fill="none"/>
+    <path d="M146 21 L150 25 L146 29" stroke="#28a745" stroke-width="2" fill="none"/>
+    
+    <!-- Document 3 confirmed -->
+    <g transform="translate(160, 0)">
+      <rect x="0" y="0" width="40" height="50" rx="3" fill="#d1ecf1" stroke="#17a2b8" stroke-width="1"/>
+      <rect x="5" y="8" width="30" height="2" rx="1" fill="#6c757d"/>
+      <rect x="5" y="14" width="25" height="1.5" rx="0.75" fill="#adb5bd"/>
+      <rect x="5" y="19" width="20" height="1.5" rx="0.75" fill="#adb5bd"/>
+      <rect x="25" y="35" width="12" height="8" rx="1" fill="#17a2b8"/>
+      <text x="31" y="41" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="white">SO</text>
+      <text x="20" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6c757d">Confirmed</text>
+    </g>
+  </g>
+  
+  <!-- Right side - Title and features -->
+  <g transform="translate(320, 60)">
+    <!-- Main title -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">Sale Order</text>
+    <text x="0" y="25" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">Approval Workflow</text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="12" fill="#6c757d">Professional approval system for Odoo</text>
+    
+    <!-- Features -->
+    <g transform="translate(0, 65)">
+      <!-- Feature 1 -->
+      <circle cx="6" cy="6" r="3" fill="#28a745"/>
+      <path d="M4 6 L5.5 7.5 L8 4.5" stroke="white" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <text x="18" y="10" font-family="Arial, sans-serif" font-size="10" fill="#495057">Mandatory approval step</text>
+      
+      <!-- Feature 2 -->
+      <g transform="translate(0, 20)">
+        <circle cx="6" cy="6" r="3" fill="#17a2b8"/>
+        <rect x="3" y="3" width="6" height="6" rx="1" fill="white"/>
+        <text x="18" y="10" font-family="Arial, sans-serif" font-size="10" fill="#495057">Enhanced workflow control</text>
+      </g>
+      
+      <!-- Feature 3 -->
+      <g transform="translate(0, 40)">
+        <circle cx="6" cy="6" r="3" fill="#6f42c1"/>
+        <path d="M3 6 L6 3 L9 6 L6 9 Z" fill="white"/>
+        <text x="18" y="10" font-family="Arial, sans-serif" font-size="10" fill="#495057">Better compliance & audit trail</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Version badge -->
+  <rect x="460" y="20" width="80" height="20" rx="10" fill="#6f42c1"/>
+  <text x="500" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">v18.0</text>
+</svg>

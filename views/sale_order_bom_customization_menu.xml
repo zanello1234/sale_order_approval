@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu and action for BOM Customization Sale Orders -->
+        <record id="action_sale_order_bom_customization" model="ir.actions.act_window">
+            <field name="name">BOM Customization</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[("state", "=", "bom_customization")]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No hay órdenes en estado BOM Customization.
+                </p>
+                <p>
+                    Aquí puedes ver todas las órdenes de venta en estado de customización de BOM.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_sale_order_bom_customization"
+                  name="BOM Customization"
+                  parent="sale.sale_order_menu"
+                  action="action_sale_order_bom_customization"
+                  sequence="12"/>
+    </data>
+</odoo>

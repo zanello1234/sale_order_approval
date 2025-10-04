@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Sale Order Form View Extension -->
+        <record id="view_order_form_inherit_approval" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.approval</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Add buttons before the original confirm button -->
+                <xpath expr="//button[@name='action_confirm']" position="before">
+                    <!-- Approve Order Button (Draft/Sent -> Approved) -->
+                    <button name="action_approve_order" 
+                            type="object" 
+                            string="Approve" 
+                            class="btn-primary" 
+                            invisible="state not in ('draft', 'sent')"
+                            help="Aprobar esta orden para permitir la customización de BOM"
+                            groups="sales_team.group_sale_salesman"/>
+                            
+                    <!-- Customize BOM Button (Approved -> BOM Customization) -->
+                    <button name="action_customize_bom" 
+                            type="object" 
+                            string="Customize BOM" 
+                            class="btn-warning" 
+                            invisible="state != 'approved'"
+                            help="Configurar BOMs y mover a la fase de customización"
+                            groups="sales_team.group_sale_salesman"/>
+                </xpath>
+                
+                <!-- Hide original Confirm button completely and replace with conditional version -->
+                <xpath expr="//button[@name='action_confirm']" position="replace">
+                    <!-- Only show Confirm button when order is in BOM customization -->
+                    <button name="action_confirm" 
+                            type="object" 
+                            string="Confirm" 
+                            class="btn-success" 
+                            invisible="state != 'bom_customization'"
+                            help="Confirmar la orden y crear entregas y órdenes de manufactura"
+                            groups="sales_team.group_sale_salesman"/>
+                </xpath>
+                
+                <!-- Ensure Cancel button is always visible -->
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+                
+                <!-- Add informational banners -->
+                <xpath expr="//sheet" position="before">
+                    <!-- Banner for draft/sent states -->
+                    <div class="alert alert-warning" role="alert" invisible="state not in ('draft', 'sent')">
+                        <p class="mb-0">
+                            <strong>⏳ Aprobación Requerida</strong><br/>
+                            Esta orden debe ser aprobada antes de continuar. 
+                            Haga clic en <strong>"Approve Order"</strong> para proceder con la aprobación.
+                        </p>
+                    </div>
+                    
+                    <!-- Banner for approved state -->
+                    <div class="alert alert-info" role="alert" invisible="state != 'approved'">
+                        <p class="mb-0">
+                            <strong>✅ Orden Aprobada</strong><br/>
+                            Esta orden ha sido aprobada y está lista para la customización de BOM. 
+                            Haga clic en <strong>"Customize BOM"</strong> para configurar productos y BOMs.
+                        </p>
+                    </div>
+                    
+                    <!-- Banner for BOM customization state -->
+                    <div class="alert alert-success" role="alert" invisible="state != 'bom_customization'">
+                        <p class="mb-0">
+                            <strong>🔧 Fase de Customización de BOM</strong><br/>
+                            Configure sus BOMs y productos en esta fase. 
+                            Haga clic en <strong>"Confirm"</strong> cuando esté listo para crear entregas y órdenes de manufactura.
+                        </p>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Sale Order Tree View Extension -->
+        <record id="view_order_tree_inherit_approval" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.approval</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" 
+                           decoration-info="state in ('draft', 'sent')" 
+                           decoration-success="state == 'approved'"
+                           decoration-primary="state == 'bom_customization'"
+                           decoration-bf="state in ('sale', 'done')"
+                           decoration-muted="state == 'cancel'"
+                           widget="badge"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Sale Order Kanban View Extension -->
+        <record id="view_sale_order_kanban_inherit_approval" model="ir.ui.view">
+            <field name="name">sale.order.kanban.inherit.approval</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sale_order_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" 
+                           decoration-info="state in ('draft', 'sent')" 
+                           decoration-success="state == 'approved'"
+                           decoration-primary="state == 'bom_customization'"
+                           decoration-bf="state in ('sale', 'done')"
+                           decoration-muted="state == 'cancel'"
+                           widget="badge"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</odoo>
